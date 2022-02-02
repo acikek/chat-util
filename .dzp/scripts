@@ -1,0 +1,105 @@
+---
+chat_channel:
+  path: "./src/cmd/channel.dsc"
+  type: command
+  keys:
+    - aliases
+    - description
+    - name
+    - permission
+    - script
+    - tab completions
+    - type
+    - usage
+  doc: ~
+chat_config:
+  path: "./src/data/config.dsc"
+  type: data
+  keys:
+    - channels
+    - type
+  doc: ~
+chat_handler:
+  path: "./src/main/chat_util.dsc"
+  type: world
+  keys:
+    - debug
+    - events
+    - type
+  doc: ~
+chat_ignore:
+  path: "./src/cmd/ignore.dsc"
+  type: command
+  keys:
+    - description
+    - name
+    - permission
+    - required
+    - script
+    - tab completions
+    - type
+    - usage
+  doc: ~
+chat_join:
+  path: "./src/data/config.dsc"
+  type: procedure
+  keys:
+    - debug
+    - script
+    - type
+  doc: ~
+chat_leave:
+  path: "./src/data/config.dsc"
+  type: procedure
+  keys:
+    - debug
+    - script
+    - type
+  doc: ~
+chat_mute:
+  path: "./src/cmd/mute.dsc"
+  type: command
+  keys:
+    - description
+    - name
+    - permission
+    - required
+    - script
+    - tab completions
+    - type
+    - usage
+  doc: ~
+chat_prefix:
+  path: "./src/data/config.dsc"
+  type: procedure
+  keys:
+    - debug
+    - script
+    - type
+  doc: ~
+chat_unignore:
+  path: "./src/cmd/ignore.dsc"
+  type: command
+  keys:
+    - description
+    - name
+    - permission
+    - required
+    - script
+    - tab completions
+    - type
+    - usage
+  doc: ~
+chat_unmute:
+  path: "./src/cmd/mute.dsc"
+  type: command
+  keys:
+    - description
+    - name
+    - permission
+    - required
+    - script
+    - tab completions
+    - type
+    - usage
+  doc: ~
