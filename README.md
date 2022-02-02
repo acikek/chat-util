@@ -8,17 +8,17 @@ Various chat utilities
 
 #### channel
 
-> Permission: `chat.channel`
+**Permission**: `chat.channel`<br>
 Switches the chat channel. Configurable in the `chat_config` data script.
 
 #### ignore
 
-> Permission: `chat.ignore`
+**Permission**: `chat.ignore`<br>
 Ignores a player's messages. `unignore` is the reverse of this command.
 
 #### mute
 
-> Permission: `chat.mute`
+**Permission**: `chat.mute`<br>
 Mutes a player for a duration of time. `unmute` is the reverse of this command.
 
 ### Config
