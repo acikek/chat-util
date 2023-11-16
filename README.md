@@ -36,7 +36,6 @@ Clone using git:
 ```sh
 git clone https://github.com/acikek/chat-util
 ```
-Use [dzp](https://github.com/acikek/dzp-rs) for additional features.
 
 ### Dependencies
 
