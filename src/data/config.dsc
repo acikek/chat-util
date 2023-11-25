@@ -14,7 +14,14 @@ chat_prefix:
   type: procedure
   debug: false
   script:
-  - determine <player.name><&co>
+  - if not <player.has_flag[rank]>:
+    - determine <player.name><&co>
+  # Built-in integration with rank
+  - define rank <player.flag[rank].proc[rank_get]>
+  - define color <[rank].get[color].parsed>
+  # Display rank info when hovering over the player's name - color is distinguishable by itself
+  - define name <[color]><player.name.on_hover[<[color]><[rank].get[name]>]>
+  - determine "<[name]><gray>:"
 
 chat_join:
   type: procedure
