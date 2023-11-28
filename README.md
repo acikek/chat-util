@@ -30,6 +30,10 @@ The `chat_config` data script controls the channels and their data. Each value u
 
 Additionally, below the config, there are 3 procedure scripts that control the prefix of the chat message (everything before the actual message, including the player's name) and join and leave messages.
 
+### Events
+
+The `player_chats` *custom* event replaces the `player chats` event. It includes the same context tags with an additional `<context.channel>` map. The custom event is cancellable.  
+
 ## Setup
 
 Clone using git:
