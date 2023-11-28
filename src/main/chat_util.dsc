@@ -4,11 +4,13 @@ chat_handler:
   events:
     on player chats:
     - determine passively cancelled
-    - if <player.has_flag[chat.mute]>:
+    - if <player.has_flag[chat.muted]>:
       - narrate "<red>You are muted!"
-    - else:
-      - define channel <script[chat_config].data_key[channels].get[<player.flag[chat.channel]>]>
-      - narrate "<proc[chat_prefix]> <[channel].get[color].parsed><context.message>" targets:<[channel].get[targets].parsed>
+      - stop
+    - define channel <script[chat_config].data_key[channels].get[<player.flag[chat.channel]>]>
+    - define targets <[channel].get[targets].parsed.exclude[<player.flag[chat.ignore].if_null[<list>]>]>
+    - narrate "<proc[chat_prefix]> <[channel].get[color].parsed><context.message>" targets:<[targets]>
+    - customevent id:player_chats context:[message=<context.message>;channel=<[channel]>;targets=<[targets]>]
     on player joins:
     - determine <proc[chat_join]>
     on player quits:
