@@ -6,17 +6,18 @@ chat_ignore:
   required: 1
   permission: chat.ignore
   tab completions:
-    1: <server.players_flagged[chat.ignore].exclude[<player>].filter_tag[<[filter_value].flag[chat.ignore].contains[<player>].not>].parse[name]>
+    1: <server.online_players.exclude[<player>|<player.flag[chat.ignoring].if_null[<list>]>].parse[name]>
   script:
   - inject cmd_args
   - define user <context.args.first>
   - inject cmd_player
   - if <[user]> == <player>:
     - define reason "You can't ignore yourself!"
-  - else if <[user].has_flag[chat.ignore]> and <player> not in <[user].flag[chat.ignore]>:
+  - else if <[user]> in <player.flag[chat.ignoring].if_null[<list>]>:
     - define reason "You're already ignoring this player!"
   - inject cmd_err
-  - flag <[user]> chat.ignore:->:<player>
+  - flag <[user]> chat.ignored_by:->:<player>
+  - flag <player> chat.ignoring:->:<[user]>
   - narrate "<green>Now ignoring <&[emphasis]><[user].name><green>."
 
 chat_unignore:
@@ -27,13 +28,14 @@ chat_unignore:
   required: 1
   permission: chat.ignore
   tab completions:
-    1: <server.players_flagged[chat.ignore].exclude[<player>].filter_tag[<[filter_value].flag[chat.ignore].contains[<player>]>].parse[name]>
+    1: <player.flag[chat.ignoring].parse[name].if_null[<list>]>
   script:
   - inject cmd_args
   - define user <context.args.first>
   - inject cmd_player
-  - if !<[user].has_flag[chat.ignore]> or <player> not in <[user].flag[chat.ignore]>:
+  - if <[user]> not in <player.flag[chat.ignoring].if_null[<list>]>:
     - define reason "You aren't ignoring this player!"
     - inject cmd_err
-  - flag <[user]> chat.ignore:<-:<player>
+  - flag <[user]> chat.ignored_by:<-:<player>
+  - flag <player> chat.ignoring:<-:<[user]>
   - narrate "<green>Un-ignored <&[emphasis]><[user].name><green>."
